@@ -104,6 +104,11 @@ These amazing people have contributed code, documentation, or significant improv
 
 ### Other Contributors
 
+- **[@Skulli485](https://github.com/Skulli485)** - [PR #171](https://github.com/OthmanAdi/planning-with-files/pull/171), [Issue #162](https://github.com/OthmanAdi/planning-with-files/issues/162)
+   - Authored the first `CONTRIBUTING.md` at the repo root, covering local setup, project layout, PR submission conventions, authorship and credit policy, language variant contribution rules, and where to ask questions
+   - A pre-merge follow-up commit by the maintainer removed a duplicated intro and a broken four-backtick code fence from the original diff
+   - **Impact:** new contributors now land on a dedicated guide auto-surfaced by GitHub in the PR creation flow, replacing the previous inference-based onboarding from `CLAUDE.md` and prior merged PRs
+
 - **[@carterusedulm2-maker](https://github.com/carterusedulm2-maker)** - [PR #169](https://github.com/OthmanAdi/planning-with-files/pull/169), [PR #170](https://github.com/OthmanAdi/planning-with-files/pull/170)
   - PR #169: replaced the `[[ $# -gt 0 ]]` bashism in `init-session.sh` with POSIX `[ $# -gt 0 ]` across the 8 mirrored copies (canonical, `.codebuddy`, `.codex`, `.continue`, `.factory`, `.gemini`, `.pi`, top-level `scripts/`). The script's shebang is `#!/usr/bin/env bash`, but `tests/test_init_session_slug.py` invokes it via `["sh", str(INIT_SH), ...]` which bypasses the shebang and runs under `dash` on Ubuntu, where the `[[ ]]` syntax fails before any slug-mode logic can execute
   - PR #170: documented a Topic Handoff Pattern in `docs/quickstart.md` and `docs/workflow.md` for splitting unrelated topics across `.planning/<slug>/` directories or a manual `handoffs/<topic>.md` detail layer alongside `progress.md`
@@ -271,6 +276,7 @@ Thank you to everyone who reported issues, provided feedback, and helped test fi
 - [@tingles2233](https://github.com/tingles2233) - Issue #29 (Plugin update issues)
 - [@st01cs](https://github.com/st01cs) - Issue #28 (Devis fork discussion)
 - [@wqh17101](https://github.com/wqh17101) - Issue #11 testing and confirmation
+- [@luyanfeng](https://github.com/luyanfeng) - Issue #172 (OpenCode install/verify paths doubled the folder segment in docs/opencode.md; fixed in v2.43.0)
 
 And many others who have starred, forked, and shared this project!
 
@@ -298,6 +304,6 @@ If you've contributed and don't see your name here, please open an issue! We wan
 
 ---
 
-**Total Contributors:** 42+ and growing!
+**Total Contributors:** 44+ and growing!
 
-*Last updated: May 24, 2026*
+*Last updated: May 26, 2026*

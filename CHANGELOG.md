@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.43.0] - 2026-05-26
+
+### Added
+
+- **CONTRIBUTING.md at repo root** (PR #171 by @Skulli485, closes issue #162): first-time contributor guide covering local setup, project layout, PR submission conventions, authorship and credit policy, language variant contribution rules, and where to ask questions. Pre-merge follow-up commit removed a duplicated intro and a broken code fence that the original diff carried. GitHub auto-surfaces the file in the PR creation flow now.
+
+### Fixed
+
+- **OpenCode docs broken install/verify paths** (Issue #172 by @luyanfeng): `docs/opencode.md` referenced `planning-with-files/planning-with-files/SKILL.md` (doubled folder segment) in the manual-install block, the `cat` usage block, and both verification `ls` commands. The path assumed a full-repo clone into the skills directory rather than a direct file copy of the `.opencode/skills/planning-with-files/` subtree. v2.43.0 replaces the manual-install Quick Install with `npx skills add` (matching every other IDE doc) and rewrites the manual-install and verification commands so the path resolves to the single-level location where the skill actually lands. OpenCode session-catchup note updated to point at the SQLite store path the v2.38.0 rewrite introduced, replacing the stale "Full ... support is planned for a future release" line.
+
+- **`.continue` variant SKILL.md sync gap from v2.34.0 to v2.43.0** (Issue #159): nine versions behind canonical. v2.43.0 ports Rule 7 (Continue After Completion), the Security Boundary section with delimiter framing and hash attestation, the expanded Scripts section listing `init-session.sh`/`set-active-plan.sh`/`resolve-plan-dir.sh`/`check-complete.sh`/`session-catchup.py`/`attest-plan.sh` plus the parallel task workflow block, the "Write web content to task_plan.md" Anti-Pattern row, and the 5-Question Reboot Test. Continue-specific items preserved: `.continue/skills/...` script paths, session-catchup invocation shape. The v2.34.0 Security Boundary table removed (canonical version supersedes it with delimiter/attestation coverage). File grew from 92 to 179 lines.
+
+- **`.gemini` variant SKILL.md sync gap from v2.34.0 to v2.43.0** (Issue #160): nine versions behind canonical. v2.43.0 ports the same canonical content as `.continue` plus the parallel task workflow and 5-Question Reboot Test. Gemini-specific items preserved: `hooks: "Configured in .gemini/settings.json (SessionStart, BeforeTool, AfterTool, BeforeModel)"` metadata key. The Claude-specific Turn-Loop Integration section is omitted because Gemini CLI has no `/plan-goal`, `/plan-loop`, or `PreCompact` hook primitive; the Gemini-specific Security Boundary section references Gemini lifecycle hooks instead. File grew from 179 to 199 lines.
+
+- **`.kiro` variant SKILL.md sync gap from v2.32.0-kiro to v2.43.0-kiro** (Issue #161): eleven versions behind canonical. v2.43.0 ports Rule 7, the expanded Scripts section (bootstrap, session-catchup, check-complete), the Anti-Patterns table, and the 5-Question Reboot Test. Kiro-specific items preserved: `metadata.integration: kiro` field, Agent Skill layout, `compatibility:` frontmatter key, STEP 0/1/2/3 structure, `.kiro/steering/` references, `#[[file:.kiro/plan/…]]` live references, and `assets/scripts/` path convention. Version kept as `2.43.0-kiro` per the original suffix convention.
+
+### Changed
+
+- Version bumped to 2.43.0 across 17 parity-locked files via `scripts/bump-version.py`. The three lagging variants (`.continue`, `.gemini`, `.kiro`) were synced manually in this release; `.pi` remains intentionally on the npm scheme (`1.1.0` in `package.json`) per AGENTS.md.
+
+### Verification
+
+- Test count: 130 pass, 2 skip (Windows exec-bit, pre-existing baseline since v2.34.1), 0 fail. PR #171 adds markdown only; the v2.43.0 fix for `docs/opencode.md` touches no executable paths; `.continue`, `.gemini`, and `.kiro` SKILL.md rewrites are read by the model at runtime, not parsed by the test suite. The parity test (`test_skill_md_version_parity.py`) continues to validate the 17-file parity set without drift.
+
+### Thanks
+
+- @Skulli485 for the CONTRIBUTING.md draft (PR #171), first contribution to the repo.
+- @luyanfeng for reporting the OpenCode docs path bug (issue #172), first contribution to the repo.
+
 ## [2.42.0] - 2026-05-25
 
 ### Fixed
